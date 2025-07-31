@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bolonews
+{% endblock %}
+
+{% block body %}
+	<section class="LaUne">
+		<h3>A la Une !</h3>
+		{% if articles %}
+			<div class="articleALaune">
+				<div class="imgALaune">
+					{% if articles.image %}
+						<img src="{{ asset(articles.image) }}" alt="image de l'article à la une de bolonews">
+					{% endif %}
+				</div>
+				<div class="article-text">
+					<span class="categorie-laUne">{{ articles.categorie.nom }}</span>
+					<h2 class="titreALaune">{{ articles.titre }}</h2>
+					<p class="paraALaune">{{ articles.chapeau }}</p>
+					<div>
+						<span>{{ articles.auteur.nom }}</span>
+						<span>publié le
+							{{ articles.date|date('d/m/Y H:i') }}</span>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</section>
+
+	<section class="DernieresParutions">
+		<h3>Dernières parutions</h3>
+		<div class="articles-derParu">
+			{% for article in dernieresParutions %}
+				<div class="derParuImg">
+					{% if article.image %}
+						<img src="{{ asset(article.image) }}" alt="image de l'article">
+					{% endif %}
+				</div>
+				<div class="derParuText">
+					<div class="article-derParu"></div>
+					<span class="categorie-derParu">{{ article.categorie.nom }}</span>
+					<h4>{{ article.titre }}</h4>
+					<span>{{ article.auteur.nom }}</span>
+					<span>{{ article.date|date('d/m/Y H:i') }}</span>
+					<p>{{ article.chapeau }}</p>
+
+					<a href="{{ path('app_article_show', {'id': article.id}) }}">Lire la suite</a><br>
+					<span class="like-count">{{ article.likes|length }}</span>
+					<button class="like-button">{{ ux_icon('ph:heart') }}</button>
+
+				</div>
+
+			{% else %}
+				<p>Aucun article récent.</p>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

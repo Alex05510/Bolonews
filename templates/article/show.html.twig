@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<section class="detail">
+		<span class="categorie-detail">{{ article.categorie.nom }}</span>
+		<div class="articleDetail">
+			<h2 class="titreDetail">{{ article.titre }}</h2>
+			<span>publié le
+				{{ article.date|date('d/m/Y H:i') }}</span>
+			<p class="paraDetail">{{ article.chapeau }}</p>
+			<div class="imgDetail">
+				<img src="{{ asset(article.image) }}" alt="image de l'article de bolonews">
+			</div>
+			<div class="article-textDetail">
+				<div>
+					<p class="contenuDetail">{{ article.contenu }}</p>
+					<span>{{ article.auteur.nom }}</span>
+					<div class="like">
+						<span class="like-count">{{ article.likes|length}}</span>
+						<button class="like-button">J'aime</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

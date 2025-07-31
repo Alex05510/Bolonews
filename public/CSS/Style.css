@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 8px;
+    margin: 16px;
+}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+.primary-title,
+.primary-p {
+    text-align: center;
+}
+.black-space {
+    border-bottom: 3px solid;
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+section.button-footer {
+    text-align: center;
+}
+section.button-footer h2 {
+    padding-top: 5rem;
+}
+section.link-footer {
+    display: flex;
+    justify-content: center;
+    gap: 11rem;
+    margin-top: 5rem;
+}
+.button {
+    margin-top: 2rem;
+}
+section.link-footer ul {
+    list-style: none;
+}
+section.link-footer ul li:nth-child(1) {
+    margin-bottom: 1rem;
+}
+footer {
+    background-color: black;
+    color: white;
+}
+li.light-color {
+    color: #ffffff63;
+}
+button.button-one,
+button.button-two {
+    padding: 6px 10px;
+    width: 7%;
+    border-radius: 5px;
+}
+button.button-two {
+    background-color: white;
+    color: black;
+    border: black solid 1px;
+}
+button.button-one {
+    background-color: black;
+    color: white;
+    border: white solid 1px;
+}
+.copy {
+    text-align: center;
+    margin-top: 10rem;
+    border-top: 1px solid rgb(255 255 255 / 8%);
+}
+.link-social ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+.copy {
+    text-align: center;
+    margin-top: 10rem;
+    border-top: 1px solid rgb(255 255 255 / 8%);
+    padding: 2rem;
+}
+.link-social {
+    margin-top: 1rem;
+}
+.link-social ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    justify-content: right;
+    margin-right: 10rem;
+}
+.title {
+    width: 9%;
+}
+h1.primary-title {
+    font-weight: bold;
+    font-size: 76px;
+}
+.navbar a:hover {
+    color: #939292;
+}
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+.imgALaune {
+    width: 467px;
+    height: 319px;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+p.paraALaune {
+    margin-top: 2rem;
+}
+.articleALaune {
+    display: flex;
+    gap: 1rem;
+    margin-left: 25%;
+}
+section.LaUne h3 {
+    margin-left: 25%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.imgALaune {
+    width: 467px;
+    height: 319px;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+.article-text {
+    width: 18%;
+    padding: 0.3rem;
+}
+span.categorie-laUne {
+    background-color: lightgrey;
+    padding: 2px 10px;
+}
+h2.titreALaune {
+    margin-top: 1rem;
+}
+section.DernieresParutions {
+    margin-left: 25%;
+    margin-top: 2rem;
+}
+.derParuImg {
+    width: 15%;
+    height: 26vh;
+    background-color: lightgrey;
+}

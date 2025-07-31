@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="searchBar">
+		{{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+		{{ form_widget(form.recherche) }}
+		<button type="submit" class="search">Rechercher</button>
+		{{ form_end(form) }}
+	</div>
+
+{% endblock %}

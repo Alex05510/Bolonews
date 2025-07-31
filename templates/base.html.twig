@@ -1,17 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}
+		<link rel="stylesheet" href="{{ asset('CSS/Style.css') }}">
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block header %}
+			<header>
+				<div class="navbar">
+					<div class="title">Bolonews</div>
+					<ul class="nav-links">
+						<li>
+							<a href="{{ path('app_home')}}">Home</a>
+						</li>
+						<li>
+							<a href="{{ path('app_article') }}">Articles</a>
+						</li>
+						<li>
+							<a href="#">Contact</a>
+						</li>
+					</ul>
+					<ul class="private-space">
+						{% if app.user %}
+							<li>
+								<a href="#">Mon espace</a>
+							</li>
+							<li>
+								<a href="{{ path('app_logout')}}">Me déconnecter</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{ path('app_login')}}">Se connecter</a>
+							</li>
+							<li>
+								<a href="{{ path('app_register')}}">M'inscrire</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="title-nav">
+					<h1 class="primary-title">Bolonews</h1>
+					<p class="primary-p">Les meilleures sauces pour les pâtes et de l'actualité sur le grill</p>
+				</div>
+				<div
+					class="black-space"><!--utiliser pour faire la separation bordure noir -->
+				</div>
+			</header>
+		{% endblock %}
+		{% block body %}{% endblock %}
+		{% block footer %}
+			<footer>
+				<section class="button-footer">
+					<h2>Overcome Ignorance and
+						<br>
+						Fight for Equality</h2>
+					<div class="button">
+						<button class="button-one">recieve news</button>
+						<button class="button-two">donate</button>
+					</div>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+				</section>
+				<section class="link-footer">
+					<div class="navigation">
+						<ul>
+							<li>Navigation</li>
+							<li class="light-color">Home</li>
+							<li class="light-color">About Us</li>
+							<li class="light-color">What We Do</li>
+							<li class="light-color">To The Power of 10</li>
+							<li class="light-color">Donate</li>
+						</ul>
+					</div>
+					<div class="whatWeDo">
+						<ul>
+							<li>What We Do</li>
+							<li class="light-color">Encouraging Advocacy</li>
+							<li class="light-color">Sharing Information</li>
+							<li class="light-color">Building Leadership</li>
+							<li class="light-color">Engaging With Global Fund</li>
+							<li class="light-color">Shining a Light</li>
+						</ul>
+					</div>
+					<div class="legal">
+						<ul>
+							<li>Legal</li>
+							<li class="light-color">General Info</li>
+							<li class="light-color">Privacy Policy</li>
+							<li class="light-color">Therms of Service</li>
+						</ul>
+					</div>
+					<div class="talkToUs">
+						<ul>
+							<li>Talk To Us</li>
+							<li class="light-color">support@ercom.com</li>
+							<li class="light-color">+66 2399 1145</li>
+							<li class="light-color">Contact Us</li>
+							<li class="light-color">Facebook</li>
+							<li class="light-color">Linkedin</li>
+							<li class="light-color">Twitter</li>
+						</ul>
+					</div>
+
+				</section>
+				<div class="copy">@copyright 2019 Lift Media. All rights reserved.</div>
+				<div class="link-social">
+					<ul>
+						<li>f</li>
+						<li>in</li>
+						<li>twitter</li>
+					</ul>
+				</div>
+			</footer>
+
+		{% endblock %}
+	</body>
 </html>
