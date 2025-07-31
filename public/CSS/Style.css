@@ -49,6 +49,7 @@ section.link-footer ul li:nth-child(1) {
 footer {
     background-color: black;
     color: white;
+    margin-top: 10rem;
 }
 li.light-color {
     color: #ffffff63;
@@ -153,4 +154,41 @@ section.DernieresParutions {
     width: 15%;
     height: 26vh;
     background-color: lightgrey;
+}
+.articles-derParu {
+    display: flex;
+    gap: 1rem;
+}
+.derParuText {
+    width: 15%;
+}
+.searchBar {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+form.form-inline {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 3px solid black;
+}
+img.img_alune {
+    width: 467px;
+    height: 319px;
+}
+img.img_derParu {
+    width: 100%;
+    height: 26vh;
+}
+section.detail {
+    margin-left: 5%;
+    padding: 2rem;
+    margin-right: 5%;
+}
+.imgDetail {
+    text-align: center;
+}
+.private-space li:first-child a {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
 }

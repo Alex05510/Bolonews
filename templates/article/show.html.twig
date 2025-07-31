@@ -8,7 +8,7 @@
 				{{ article.date|date('d/m/Y H:i') }}</span>
 			<p class="paraDetail">{{ article.chapeau }}</p>
 			<div class="imgDetail">
-				<img src="{{ asset(article.image) }}" alt="image de l'article de bolonews">
+				<img src="{{ asset('images/' ~ article.image) }}" alt="image de l'article de bolonews">
 			</div>
 			<div class="article-textDetail">
 				<div>

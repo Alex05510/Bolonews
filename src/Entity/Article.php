@@ -108,6 +108,12 @@ class Article
         $this->date = $date;
         return $this;
     }
+    public function setAuteur(?User $auteur): static
+    {
+        $this->auteur = $auteur;
+        return $this;
+    }
+
     public function getAuteur(): ?User
     {
         return $this->auteur;

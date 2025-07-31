@@ -33,7 +33,9 @@
 					<ul class="private-space">
 						{% if app.user %}
 							<li>
-								<a href="#">Mon espace</a>
+								<a href="{{ path('app_profil') }}">Mon espace
+									<img src="{{ asset('icons/ph/user.svg') }}" alt="logo de profil connecté bolonews" width="20px" height="20px">
+								</a>
 							</li>
 							<li>
 								<a href="{{ path('app_logout')}}">Me déconnecter</a>

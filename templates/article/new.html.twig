@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}New Article
+{% endblock %}
+
+{% block body %}
+	<h1>Crée un nouvel article</h1>
+
+	<form action="{{ path('app_article_new') }}" method="post">
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		{{ form_end(form) }}
+
+		<button type="submit">Créer</button>
+	</form>
+
+
+{% endblock %}

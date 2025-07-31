@@ -10,7 +10,7 @@
 			<div class="articleALaune">
 				<div class="imgALaune">
 					{% if articles.image %}
-						<img src="{{ asset(articles.image) }}" alt="image de l'article à la une de bolonews">
+						<img src="{{ asset('images/' ~ articles.image) }}" alt="image de l'article à la une de bolonews" class="img_alune">
 					{% endif %}
 				</div>
 				<div class="article-text">
@@ -33,7 +33,7 @@
 			{% for article in dernieresParutions %}
 				<div class="derParuImg">
 					{% if article.image %}
-						<img src="{{ asset(article.image) }}" alt="image de l'article">
+						<img src="{{ asset('images/' ~ article.image) }}" alt="image de l'article" class="img_derParu">
 					{% endif %}
 				</div>
 				<div class="derParuText">
@@ -45,14 +45,17 @@
 					<p>{{ article.chapeau }}</p>
 
 					<a href="{{ path('app_article_show', {'id': article.id}) }}">Lire la suite</a><br>
-					<span class="like-count">{{ article.likes|length }}</span>
-					<button class="like-button">{{ ux_icon('ph:heart') }}</button>
 
-				</div>
+					<span class="like">{{ article.likes|length }}
+						<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+					</span>
+					<span class="like">{{ article.commentaires|length }}
+						<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+					</span>
 
-			{% else %}
-				<p>Aucun article récent.</p>
-			{% endfor %}
-		</div>
-	</section>
-{% endblock %}
+				{% else %}
+					<p>Aucun article récent.</p>
+				{% endfor %}
+			</div>
+		</section>
+	{% endblock %}
