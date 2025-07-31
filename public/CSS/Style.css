@@ -15,6 +15,10 @@
     list-style: none;
     gap: 1rem;
 }
+.navbar ul li,
+.navbar .title {
+    font-weight: bold;
+}
 .primary-title,
 .primary-p {
     text-align: center;
@@ -97,7 +101,7 @@ button.button-one {
     margin-right: 10rem;
 }
 .title {
-    width: 9%;
+    width: 12%;
 }
 h1.primary-title {
     font-weight: bold;
