@@ -6,12 +6,18 @@
 
 {% block body %}
 	<h1>Mes articles publiés</h1>
-	<a href="{{ path('app_article_new') }}">Créer un nouvel article</a>
+	<button class="new_article">
+		<a href="{{ path('app_article_new') }}">Créer un nouvel article</a>
+	</button>
 	<div class="mes-articles">
 		{% for article in articles %}
+			<button class="edit-article">
+				<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn-modifier">Modifier</a>
+			</button>
 			<div class="card">
 				<span>{{ article.categorie.nom }}</span>
 				<h2>{{ article.titre }}</h2>
+				<img src="{{ asset('images/' ~ article.image) }}" alt="Image de l'article" class="article-image">
 				<span>{{ article.auteur.nom }}</span>
 				<span>{{ article.date|date('d/m/Y H:i') }}</span>
 				<p>{{ article.chapeau }}</p>

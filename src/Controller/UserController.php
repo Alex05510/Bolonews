@@ -56,6 +56,14 @@ final class UserController extends AbstractController
             'articles' => $articles,
         ]);
     }
+    #[Route('/admin/profil', name: 'user_profilAdmin')]
+    public function profilAdmin(): Response
+    {
+       
+        return $this->render('user/profilAdmin.html.twig', [
+           
+        ]);
+    }
 
     #[Route('/{id<\d+>}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response

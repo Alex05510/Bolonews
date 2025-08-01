@@ -17,10 +17,16 @@
 					<span class="categorie-laUne">{{ articles.categorie.nom }}</span>
 					<h2 class="titreALaune">{{ articles.titre }}</h2>
 					<p class="paraALaune">{{ articles.chapeau }}</p>
-					<div>
-						<span>{{ articles.auteur.nom }}</span>
+					<div><br>
+						<span>{{ articles.auteur.nom }}</span><br>
 						<span>publié le
 							{{ articles.date|date('d/m/Y H:i') }}</span>
+						<span class="like" style="margin-left: 30%;">{{ articles.likes|length }}
+							<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+						</span>
+						<span class="like">{{ articles.commentaires|length }}
+							<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+						</span>
 					</div>
 				</div>
 			</div>
@@ -31,31 +37,34 @@
 		<h3>Dernières parutions</h3>
 		<div class="articles-derParu">
 			{% for article in dernieresParutions %}
-				<div class="derParuImg">
-					{% if article.image %}
-						<img src="{{ asset('images/' ~ article.image) }}" alt="image de l'article" class="img_derParu">
-					{% endif %}
+				<div class="article-card">
+					<div class="derParuImg">
+						{% if article.image %}
+							<img src="{{ asset('images/' ~ article.image) }}" alt="image de l'article" class="img_derParu">
+						{% endif %}
+					</div>
+					<div class="derParuText">
+						<div class="article-derParu"></div>
+						<span class="categorie-derParu">{{ article.categorie.nom }}</span>
+						<h4>{{ article.titre }}</h4>
+						<span class="nom">{{ article.auteur.nom }}</span><br>
+						<span class="date">Le
+							{{ article.date|date('d/m/Y H:i') }}</span>
+						<p>{{ article.chapeau }}</p>
+						<a href="{{ path('app_article_show', {'id': article.id}) }}" class="lireLaSuite">Lire la suite
+							<img src="{{ asset('icons/ph/arrow-right.svg') }}" alt="" width="25px" height="25px"></a><br>
+
+						<span class="like">{{ article.likes|length }}
+							<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+						</span>
+						<span class="like">{{ article.commentaires|length }}
+							<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+						</span>
+					</div>
 				</div>
-				<div class="derParuText">
-					<div class="article-derParu"></div>
-					<span class="categorie-derParu">{{ article.categorie.nom }}</span>
-					<h4>{{ article.titre }}</h4>
-					<span>{{ article.auteur.nom }}</span>
-					<span>{{ article.date|date('d/m/Y H:i') }}</span>
-					<p>{{ article.chapeau }}</p>
-
-					<a href="{{ path('app_article_show', {'id': article.id}) }}">Lire la suite</a><br>
-
-					<span class="like">{{ article.likes|length }}
-						<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
-					</span>
-					<span class="like">{{ article.commentaires|length }}
-						<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
-					</span>
-
-				{% else %}
-					<p>Aucun article récent.</p>
-				{% endfor %}
-			</div>
-		</section>
-	{% endblock %}
+			{% else %}
+				<p>Aucun article récent.</p>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

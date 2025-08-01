@@ -140,7 +140,7 @@ section.LaUne h3 {
     border-radius: 10px;
 }
 .article-text {
-    width: 18%;
+    width: 27%;
     padding: 0.3rem;
 }
 span.categorie-laUne {
@@ -155,16 +155,34 @@ section.DernieresParutions {
     margin-top: 2rem;
 }
 .derParuImg {
-    width: 15%;
+    width: 36%;
     height: 26vh;
     background-color: lightgrey;
 }
+input#search_recherche {
+    border: none;
+    border-bottom: 1.5px solid;
+    width: 14%;
+}
+button.search {
+    border: none;
+}
+img.recherche {
+    background-color: white;
+}
 .articles-derParu {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0px;
+}
+.article-card {
+    width: 34%;
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
 }
 .derParuText {
-    width: 15%;
+    width: 44%;
 }
 .searchBar {
     margin-left: 1.5rem;
@@ -181,7 +199,7 @@ img.img_alune {
 }
 img.img_derParu {
     width: 100%;
-    height: 26vh;
+    height: 36vh;
 }
 section.detail {
     margin-left: 5%;
@@ -195,4 +213,22 @@ section.detail {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
+}
+a.lireLaSuite {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: right;
+}
+span.date {
+    color: #0000004f;
+    font-size: x-small;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 0.5rem;
+}
+
+span.nom {
+    color: #0000004f;
+    font-size: x-small;
 }

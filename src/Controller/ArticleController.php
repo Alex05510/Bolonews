@@ -41,6 +41,15 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
+        $imageFile = $form->get('image')->getData();
+        if ($imageFile) {
+            $newFilename = uniqid() . '.' . $imageFile->guessExtension();
+            $imageFile->move(
+                $this->getParameter('images_directory'),
+                $newFilename
+            );
+            $article->setImage($newFilename);
+        }
         $article->setAuteur($this->getUser());
         $entityManager->persist($article);
         $entityManager->flush();
@@ -50,6 +59,23 @@ public function new(Request $request, EntityManagerInterface $entityManager): Re
 
     return $this->render('article/new.html.twig', [
         'form' => $form->createView(),
+    ]);
+}
+
+#[Route('/article/{id}/edit', name: 'app_article_edit')]
+public function edit(Request $request, Article $article, EntityManagerInterface $em): Response
+{
+    $form = $this->createForm(ArticleType::class, $article);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $em->flush();
+        return $this->redirectToRoute('app_profil'); 
+    }
+
+    return $this->render('article/edit.html.twig', [
+        'form' => $form->createView(),
+        'article' => $article,
     ]);
 }
 
