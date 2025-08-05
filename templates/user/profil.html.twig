@@ -5,27 +5,53 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Mes articles publiés</h1>
-	<button class="new_article">
-		<a href="{{ path('app_article_new') }}">Créer un nouvel article</a>
-	</button>
-	<div class="mes-articles">
-		{% for article in articles %}
-			<button class="edit-article">
-				<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn-modifier">Modifier</a>
-			</button>
-			<div class="card">
-				<span>{{ article.categorie.nom }}</span>
-				<h2>{{ article.titre }}</h2>
-				<img src="{{ asset('images/' ~ article.image) }}" alt="Image de l'article" class="article-image">
-				<span>{{ article.auteur.nom }}</span>
-				<span>{{ article.date|date('d/m/Y H:i') }}</span>
-				<p>{{ article.chapeau }}</p>
-				<a href="{{ path('app_article_show', {'id': article.id}) }}">Lire la suite</a>
+	<section class="profil">
+		<div class="categorie">
+			{% for categorie in categories %}
+				<a href="{{ path('app_categorie_articles', {id: categorie.id}) }}">
+					{{ categorie.nom }}
+				</a>
+			{% endfor %}
+		</div>
 
+		<h1>Mes articles publiés</h1>
+
+		<button class="new_article">
+			<a href="{{ path('app_article_new') }}" class="new-article-link">Créer un nouvel article</a>
+		</button>
+		<div class="mes-articles">
+			<div class="cardsArticles">
+				{% for article in articles %}
+					<div class="cardProfil">
+						<div class="imgArticle">
+							<img src="{{ asset('images/' ~ article.image) }}" alt="Image de l'article" class="article-imageProfil">
+						</div>
+						<div class="profil-details">
+							<span class="categorie-laUne">{{ article.categorie.nom }}</span>
+							<button class="edit-article" style="margin-left: 10px;">
+								<a href="{{ path('app_article_edit', {'id': article.id}) }}" class="btn-modifier">Editer</a>
+							</button>
+							<h2>{{ article.titre }}</h2>
+							<p class="chapeau">{{ article.chapeau }}</p>
+							<span>Le
+								{{ article.date|date('d/m/Y H:i') }}</span>
+							<a href="{{ path('app_article_show', {'id': article.id}) }}" class="lireLaSuite">Lire la suite
+								<img src="{{ asset('icons/ph/arrow-right.svg') }}" alt="" width="25px" height="25px"></a><br>
+
+							<span class="commentaire">{{ article.likes|length }}
+								<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+							</span>
+							<span class="like" data-id="{{ article.id }}">
+								<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+								<span class="like-count">{{ article.likes|length }}</span>
+							</span>
+
+						</div>
+					{% else %}
+						<p>Vous n'avez publié aucun article.</p>
+					{% endfor %}
+				</div>
 			</div>
-		{% else %}
-			<p>Vous n'avez publié aucun article.</p>
-		{% endfor %}
-	</div>
+		</div>
+	</section>
 {% endblock %}

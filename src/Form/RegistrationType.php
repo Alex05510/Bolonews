@@ -5,10 +5,12 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\HttpFoundation\AcceptHeader;
 
 class RegistrationType extends AbstractType
 {
@@ -17,6 +19,11 @@ class RegistrationType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('nom', TextType::class)
+            ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'J\'accepte les termes et conditions',
+                'mapped' => false,
+                'required' => true,
+            ])
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'mapped' => true,

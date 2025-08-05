@@ -32,7 +32,7 @@ final class RegisterController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'form' => $form->createView(),
+            'registrationForm' => $form->createView(),
         ]);
     }
 }

@@ -3,10 +3,10 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Crée un nouvel article</h1>
 
 
-	{{ form_start(form) }}
+	{{ form_start(form, {'attr': {'class': 'form-article'}}) }}
+	<h1>Crée un nouvel article</h1><br>
 	{{ form_widget(form) }}
 	<button type="submit">Créer</button>
 	{{ form_end(form) }}

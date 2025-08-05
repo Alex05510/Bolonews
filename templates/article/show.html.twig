@@ -13,13 +13,44 @@
 			<div class="article-textDetail">
 				<div>
 					<p class="contenuDetail">{{ article.contenu }}</p>
-					<span>{{ article.auteur.nom }}</span>
-					<div class="like">
-						<span class="like-count">{{ article.likes|length}}</span>
-						<button class="like-button">J'aime</button>
+					<span>publié par
+						{{ article.auteur.nom }}</span>
+					<div class="like" data-id="{{ article.id }}">
+						<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+						<span class="like-count">{{ article.likes|length }}</span>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<div
+		class="black-space"><!-- utiliser pour la barre noire -->
+	</div>
+	<section class="commentaire">
+		<h3>Commentaires :</h3>
+		{% for commentaire in commentaires %}
+			<div class="commentaire-card">
+				<span class="commentaire-auteur">{{ commentaire.auteur.nom }}</span>
+				<span class="commentaire-date">Postée le :
+					{{ commentaire.date|date('d/m/Y H:i') }}</span>
+				<p class="commentaire-contenu">
+					<strong>{{ commentaire.contenu }}</strong>
+				</p>
+			</div>
+		{% else %}
+			<p>Aucun commentaire pour cet article.</p>
+		{% endfor %}
+		<h4>Ajouter un commentaire</h4>
+		{% if app.user %}
+			{{ form_start(form) }}
+			{{ form_widget(form.contenu) }}
+			<button type="submit" class="btn btn-primary">Ajouter</button>
+			{{ form_end(form) }}
+		{% else %}
+			<p>Vous devez être connecté pour commenter.</p>
+		{% endif %}
+	</section>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/like.js') }}"></script>
 {% endblock %}

@@ -1,1 +1,60 @@
 {% extends 'base.html.twig' %}
+{% block body %}
+	<section class="profilAdmin">
+		<div class="categorie">
+			{% for categorie in categories %}
+				<a href="{{ path('app_categorie_articles', {id: categorie.id}) }}">
+					{{ categorie.nom }}
+				</a>
+			{% endfor %}
+		</div>
+		<div class="admin">
+			<div class="gestion">
+				<ul>
+					<li class="yellow">
+						<a href="#">Articles</a>
+					</li>
+					<li>
+						<a href="#">Users</a>
+					</li>
+					<li>
+						<a href="#">Catégories</a>
+					</li>
+				</ul>
+			</div>
+			<div class="adminTitle">
+				<button class="new_article">
+					<a href="{{ path('app_article_new') }}" class="new-article-link">Créer un nouvel article</a>
+				</button>
+				<h1>Les articles publiés</h1>
+
+			</div>
+			<div class="contenuAdmin">
+				{% for article in articles %}
+					<div class="article-item">
+						<div class="cardAdmin">
+							<div class="image-admin">
+								<img src="{{ asset('images/' ~ article.image) }}" alt="">
+							</div>
+							<div class="contenu">
+								<span>{{ article.categorie.nom }}</span>
+								<button class="edit-article">
+									<a href="{{ path('app_article_edit', {id: article.id}) }}" class="btn-modifier">Editer</a>
+								</button>
+
+								<h2>{{ article.titre }}</h2>
+
+								<p class="chapeau">{{ article.chapeau }}</p>
+								<a href="{{ path('app_article_show', {id: article.id}) }}">Lire la suite
+									<img src="{{ asset('icons/ph/arrow-right.svg') }}" alt="" width="25px" height="25px"></a>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<p>Aucun article publié.</p>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

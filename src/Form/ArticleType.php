@@ -36,10 +36,6 @@ class ArticleType extends AbstractType
             ])
             ->add('date')
             ->add('chapeau')
-            ->add('auteur', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'nom',
-            ])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',

@@ -35,6 +35,7 @@ class Commentaire
         $this->auteur = $auteur;
         return $this;
     }
+    
 
     #[ORM\ManyToOne(targetEntity: Article::class, inversedBy: "commentaires")]
     #[ORM\JoinColumn(nullable: false)]

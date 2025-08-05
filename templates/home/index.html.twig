@@ -21,11 +21,13 @@
 						<span>{{ articles.auteur.nom }}</span><br>
 						<span>publié le
 							{{ articles.date|date('d/m/Y H:i') }}</span>
-						<span class="like" style="margin-left: 30%;">{{ articles.likes|length }}
+						<span class="commentaires" style="margin-left: 30%;">
 							<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+							{{ articles.commentaires|length }}
 						</span>
-						<span class="like">{{ articles.commentaires|length }}
+						<span class="like" data-id="{{ articles.id }}">
 							<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+							<span class="like-count">{{ articles.likes|length }}</span>
 						</span>
 					</div>
 				</div>
@@ -50,15 +52,17 @@
 						<span class="nom">{{ article.auteur.nom }}</span><br>
 						<span class="date">Le
 							{{ article.date|date('d/m/Y H:i') }}</span>
-						<p>{{ article.chapeau }}</p>
+						<p class="chapeau">{{ article.chapeau }}</p>
 						<a href="{{ path('app_article_show', {'id': article.id}) }}" class="lireLaSuite">Lire la suite
 							<img src="{{ asset('icons/ph/arrow-right.svg') }}" alt="" width="25px" height="25px"></a><br>
 
-						<span class="like">{{ article.likes|length }}
+						<span class="commentaires">
 							<img src="{{ asset('icons/ph/chat-circle.svg') }}" alt="comment" class="comment-icon" width="25px" height="25px">
+							{{ article.commentaires|length }}
 						</span>
-						<span class="like">{{ article.commentaires|length }}
+						<span class="like" data-id="{{ article.id }}">
 							<img src="{{ asset('icons/ph/heart.svg') }}" alt="like" class="like-icon" width="25px" height="25px">
+							<span class="like-count">{{ article.likes|length }}</span>
 						</span>
 					</div>
 				</div>
@@ -67,4 +71,7 @@
 			{% endfor %}
 		</div>
 	</section>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('assets/like.js') }}"></script>
 {% endblock %}

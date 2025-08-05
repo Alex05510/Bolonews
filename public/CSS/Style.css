@@ -117,7 +117,6 @@ h1.primary-title {
 .imgALaune {
     width: 467px;
     height: 319px;
-    background-color: lightgrey;
     border-radius: 10px;
 }
 p.paraALaune {
@@ -133,23 +132,22 @@ section.LaUne h3 {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-.imgALaune {
-    width: 467px;
-    height: 319px;
-    background-color: lightgrey;
-    border-radius: 10px;
-}
+
 .article-text {
     width: 27%;
     padding: 0.3rem;
 }
-span.categorie-laUne {
+span.categorie-laUne,
+span.categorie-derParu {
     background-color: lightgrey;
     padding: 2px 10px;
+    border-radius: 5px;
 }
-h2.titreALaune {
+h2.titreALaune,
+section.DernieresParutions h4 {
     margin-top: 1rem;
 }
+
 section.DernieresParutions {
     margin-left: 25%;
     margin-top: 2rem;
@@ -157,7 +155,6 @@ section.DernieresParutions {
 .derParuImg {
     width: 36%;
     height: 26vh;
-    background-color: lightgrey;
 }
 input#search_recherche {
     border: none;
@@ -180,6 +177,7 @@ img.recherche {
     background-color: white;
     border-radius: 8px;
     display: flex;
+    gap: 10px;
 }
 .derParuText {
     width: 44%;
@@ -196,10 +194,12 @@ form.form-inline {
 img.img_alune {
     width: 467px;
     height: 319px;
+    border-radius: 10px;
 }
 img.img_derParu {
     width: 100%;
-    height: 36vh;
+    height: 26vh;
+    border-radius: 10px 0 0 10px;
 }
 section.detail {
     margin-left: 5%;
@@ -231,4 +231,221 @@ span.date {
 span.nom {
     color: #0000004f;
     font-size: x-small;
+}
+
+.chapeau {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.profil {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.profil h1,
+button.new_article {
+    margin-bottom: 2rem;
+}
+img.article-imageProfil {
+    width: 100%;
+    height: 26vh;
+}
+.article-details {
+    width: 44%;
+}
+.article-imageProfil {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+.imgArticle {
+    width: 320px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 34%;
+}
+a.btn-modifier,
+a.new-article-link {
+    padding: 3px 7px;
+    background-color: white;
+    border: solid 1px;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+button.edit-article,
+button.new_article {
+    border: none;
+}
+section.DernieresParutions h3 {
+    margin-bottom: 1rem;
+}
+a.lireLaSuite {
+    text-decoration: none;
+    color: black;
+}
+a.lireLaSuite:hover {
+    color: #939292;
+}
+.image-admin {
+    width: 50%;
+}
+.image-admin img {
+    width: 100%;
+}
+.cardAdmin {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.contenu {
+    width: 41%;
+}
+.resultatRecherche h3 {
+    margin-left: 3%;
+    margin-top: 2rem;
+}
+.categorie div {
+    background-color: lightgrey;
+    padding: 0.5rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+}
+.categorie {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.categorie a {
+    background-color: lightgrey;
+    text-decoration: none;
+    color: black;
+    padding: 0.5px 15px;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+.categorie a:hover {
+    background-color: #939292;
+    color: white;
+}
+.contenuAdmin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.article-item {
+    width: 34%;
+}
+.adminTitle {
+    margin-left: 17%;
+    line-height: 30px;
+    margin-top: 5rem;
+}
+.contenu a {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: black;
+}
+.cardsArticles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+}
+section.commentaire {
+    margin-left: 10%;
+}
+.commentaire-card {
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 1rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+section.commentaire {
+    margin-left: 6%;
+}
+section.commentaire h3 {
+    margin-bottom: 1rem;
+}
+span.commentaire-date {
+    margin-left: 85%;
+    font-size: small;
+}
+.cardProfil {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.cardProfil {
+    display: flex;
+    flex-wrap: wrap;
+}
+.profil-details {
+    width: 20%;
+}
+.gestion {
+    width: 10%;
+    height: 20vh;
+    padding: 1rem;
+    background-color: black;
+    position: absolute;
+    top: 23.4%;
+    left: 1.2%;
+    line-height: 3rem;
+}
+.gestion a {
+    text-decoration: none;
+    color: white;
+}
+.adminTitle h1 {
+    margin-top: 7rem;
+}
+.gestion ul {
+    list-style: none;
+}
+.gestion ul li:nth-child(1) a {
+    color: yellow;
+}
+.gestion ul li:not(:nth-child(1)) a {
+    color: white;
+}
+.form-article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem auto;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.form-article .form-group,
+.form-article label,
+.form-article input,
+.form-article textarea,
+.form-article select {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: block;
+    box-sizing: border-box;
 }

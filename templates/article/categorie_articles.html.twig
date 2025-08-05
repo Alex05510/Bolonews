@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Articles de la catégorie
+{% endblock %}
+
+{% block body %}
+	{% if form %}
+		<div class="searchBar">
+			{{ form_start(form, {'attr': {'class': 'form-inline'}}) }}
+			{{ form_widget(form.recherche) }}
+			<button type="submit" class="search"><img src="{{ asset('icons/ph/magnifying-glass.svg') }}" alt="icon de loupe rechercher un article" width="25px" height="25px" class="recherche"></button>
+			{{ form_end(form) }}
+		</div>
+	{% endif %}
+	<div class="categorie">
+		{% for categorie in categories %}
+			<a href="{{ path('app_categorie_articles', {id: categorie.id}) }}">
+				{{ categorie.nom }}
+			</a>
+		{% endfor %}
+	</div>
+	<h1>Articles de la catégorie</h1>
+	<div class="mes-articles">
+		<div class="cardsArticles">
+			{% for article in articles %}
+				<div class="card">
+					<div class="imgArticle">
+						<img src="{{ asset('images/' ~ article.image) }}" alt="Image de l'article" class="article-imageProfil">
+					</div>
+					<div class="article-details">
+						<span class="categorie-laUne">{{ article.categorie.nom }}</span>
+						<h2>{{ article.titre }}</h2>
+						<p class="chapeau">{{ article.chapeau }}</p>
+						<span>Le
+							{{ article.date|date('d/m/Y H:i') }}</span>
+						<a href="{{ path('app_article_show', {'id': article.id}) }}" class="lireLaSuite">Lire la suite
+							<img src="{{ asset('icons/ph/arrow-right.svg') }}" alt="" width="25px" height="25px"></a>
+					</div>
+				</div>
+			{% else %}
+				<p>Aucun article dans cette catégorie.</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

@@ -44,28 +44,34 @@ final class UserController extends AbstractController
     }
 
     #[Route('/profil', name: 'app_profil')]
-    public function profile(ArticleRepository $articleRepository): Response
+    public function profile(ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         $articles = [];
         if ($user) {
             $articles = $articleRepository->findBy(['auteur' => $user]);
         }
+        $categories = $entityManager->getRepository(\App\Entity\Categorie::class)->findAll();
         return $this->render('user/profil.html.twig', [
             'user' => $user,
             'articles' => $articles,
+            'categories' => $categories,
         ]);
     }
     #[Route('/admin/profil', name: 'user_profilAdmin')]
-    public function profilAdmin(): Response
+    public function profilAdmin(UserRepository $userRepository, ArticleRepository $articleRepository, EntityManagerInterface $entityManager): Response
     {
-       
+        $users = $userRepository->findAll();
+        $articles = $articleRepository->findAll();
+        $categories = $entityManager->getRepository(\App\Entity\Categorie::class)->findAll();
         return $this->render('user/profilAdmin.html.twig', [
-           
+            'users' => $users,
+            'articles' => $articles,
+            'categories' => $categories,
         ]);
     }
 
-    #[Route('/{id<\d+>}', name: 'app_user_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
@@ -73,7 +79,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/edit/{id<\d+>}', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -91,7 +97,7 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id<\d+>}', name: 'app_user_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {

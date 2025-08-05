@@ -130,7 +130,16 @@ class Article
         return $this;
     }
 
-
+public function isLikedBy(?User $user): bool
+{
+    if (!$user) return false;
+    foreach ($this->getLikes() as $like) {
+        if ($like->getUser() === $user) {
+            return true;
+        }
+    }
+    return false;
+}
 
     public function getCategorie(): ?Categorie
     {

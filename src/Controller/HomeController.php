@@ -19,10 +19,13 @@ final class HomeController extends AbstractController
         ->orderBy('a.date', 'DESC')
         ->getQuery()
         ->getResult();
+        $user = $this->getUser();
 
         return $this->render('home/index.html.twig', [
-        'articles' => $articles,
-        'dernieresParutions' => $dernieresParutions,
-    ]);
+            'user' => $user,
+            'articles' => $articles,
+            'dernieresParutions' => $dernieresParutions,
+            
+        ]);
 }
 }
